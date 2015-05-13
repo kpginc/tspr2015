@@ -37,7 +37,7 @@ angular.module('gestor', ['ionic', 'gestor.controllers', 'gestor.services'])
   .state('apointment', {
       url: "/apointment/",
       templateUrl: 'templates/apointment.html',
-      controller: 'ApointmentCtrl',
+      controller: 'ApointmentCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
