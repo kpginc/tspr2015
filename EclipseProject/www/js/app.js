@@ -29,18 +29,25 @@ angular.module('gestor', ['ionic', 'gestor.controllers', 'gestor.services'])
   $stateProvider
 
   $stateProvider
+  .state('intro', {
+      url: '/intro',
+      templateUrl: 'templates/intro.html',
+      controller: 'IntroCtrl'
+  })
   .state('main', {
       url: '/main',
       templateUrl: 'templates/main.html',
       controller: 'MainCtrl'
   })
   .state('apointment', {
-      url: "/apointment/",
+      url: "/apointment",
       templateUrl: 'templates/apointment.html',
-      controller: 'ApointmentCtrl'
+      controller: 'ApointmentCtrl',
+      
+    	  
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/main');
+  $urlRouterProvider.otherwise('/intro');
 
 });

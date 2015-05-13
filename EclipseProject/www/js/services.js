@@ -1,5 +1,51 @@
 angular.module('gestor.services', [])
+.service('agencyData', function (){
+	this.agencyId = {};
+	
+	
+	this.setId = function (id){
+		this.agencyId = id;
+	}
+	
+	this.getId = function (){
+		return this.agencyId
+	}
+	
+	
+	
+})
+.service('apiCalls', function (){
+	
+	//Returns all the agencies from the database.
+	function GetAllAgencies() {
+		$.get("https://hackaton2015.azure-mobile.net/tables/agencia", function (data) {
+			$.each(data, function(key, value) { 
+				console.log("Id: " + value.id + " " + "Nombre: " + value.nombre);
+		    });
+        });
+	}
 
+//Returns all the gestions and periods from the database.
+	function GetAllGestionPeriods() {
+		$.get("https://hackaton2015.azure-mobile.net/api/gestion_periodo", function (data) {
+			$.each(data, function(key, value) { 
+				console.log("Nombre: " + value.nombre + " " + "Fecha Desde: " + value.fechadesde + " " + "Fecha Hasta: " + value.fechahasta);
+		    });
+        });
+	}
+
+//Get gestion by name.
+	function SearchGestionByAgencyId(agencyId) {
+		var url = "https://hackaton2015.azure-mobile.net/api/gestion?agenciaid=" + agencyId;
+		$.get(url, function (data) {
+			$.each(data, function(key, value) { 
+				console.log("Nombre: " + value.nombre);
+			});
+		})
+	}
+
+	
+})
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
